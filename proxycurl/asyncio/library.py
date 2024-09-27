@@ -1543,6 +1543,7 @@ class _LinkedinCompany:
         employment_status: str = None,
         sort_by: str = None,
         resolve_numeric_id: str = None,
+        after: str = None,
     ) -> Awaitable[EmployeeList]:
         """Employee Listing Endpoint
         
@@ -1638,6 +1639,9 @@ class _LinkedinCompany:
             params['sort_by'] = sort_by
         if resolve_numeric_id is not None:
             params['resolve_numeric_id'] = resolve_numeric_id
+
+        if after is not None:
+            params['after'] = after
 
         resp = await self.linkedin.proxycurl.request(
             method='GET',
